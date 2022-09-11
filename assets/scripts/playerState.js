@@ -19,7 +19,7 @@ class State {
 
 export class Sitting extends State {
     constructor(game) {
-        super('SITTING', game);
+        super('SITTING', game);  
         // this.player = player;
     }
     enter() {

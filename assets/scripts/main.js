@@ -4,8 +4,15 @@ import { Background } from './background.js';
 import { FlyingEnemy, GroundEnemy, ClimbingEnemy } from './enemies.js';
 import { UI } from './UI.js';
 
+// import { Sitting } from './playerState.js';
 
-const customTime = parseInt(prompt('Enter Game Time in Minutes: ',5));
+
+let customTime; 
+
+while (!customTime) {
+    customTime=parseInt(prompt('Enter Game Time in Minutes: '));
+}
+
 window.addEventListener('load', function() {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
@@ -35,6 +42,7 @@ window.addEventListener('load', function() {
             this.winningScore = 40;
             this.time = 0;
             this.maxTime = customTime>0?(customTime*1000*60):30000;
+            // this.maxTime = 0;
             // this.maxTime = 30000 * 60;
             this.gameOver = false;
             this.lives = 5;
@@ -101,7 +109,6 @@ window.addEventListener('load', function() {
         game.update(deltaTime);
         game.draw(ctx);
         if (!game.gameOver) requestAnimationFrame(animate);
-        // requestAnimationFrame(animate);
     }
     animate(0);
 });
